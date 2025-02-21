@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Guru - Survey Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="survey-container">
+        <nav class="header">
+            <div>
+            <h1>Grocery Guru | Survey Form</h1> <!-- Title pushed up -->
+            </div>
+        </nav>
+        <div class="intro-screen">
+            <h2>Welcome to the Survey!</h2>
+            <p>This short survey will take less than 5 minutes.</p>
+            <p>Please note that submitting multiple forms won't work.</p>
+            <button onclick="startSurvey()">Start Survey</button>
+        </div>
+        <div class="question-box"> <!-- More centered question box -->
+            <form id="survey-form">
+                <div class="question active">
+                    <p>1. How often do you go grocery shopping?</p>
+                    <div class="options">
+                        <button type="button" onclick="selectAnswer(0, 'Daily')">Daily</button>
+                        <button type="button" onclick="selectAnswer(0, 'Weekly')">Weekly</button>
+                        <button type="button" onclick="selectAnswer(0, 'Monthly')">Monthly</button>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>2. What is your preferred shopping method?</p>
+                    <div class="options">
+                        <button type="button" onclick="selectAnswer(1, 'In-store')">In-store</button>
+                        <button type="button" onclick="selectAnswer(1, 'Online')">Online</button>
+                        <button type="button" onclick="selectAnswer(1, 'Both')">Both</button>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>3. How important is price when choosing groceries?</p>
+                    <div class="options">
+                        <button type="button" onclick="selectAnswer(2, 'Very Important')">Very Important</button>
+                        <button type="button" onclick="selectAnswer(2, 'Somewhat Important')">Somewhat Important</button>
+                        <button type="button" onclick="selectAnswer(2, 'Not Important')">Not Important</button>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>4. Do you prefer organic or non-organic groceries?</p>
+                    <div class="options">
+                        <button type="button" onclick="selectAnswer(3, 'Organic')">Organic</button>
+                        <button type="button" onclick="selectAnswer(3, 'Non-Organic')">Non-Organic</button>
+                        <button type="button" onclick="selectAnswer(3, 'No Preference')">No Preference</button>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>5. How often do you forget to buy some groceries or buy some items you never even needed?</p>
+                    <div class="options">
+                        <button type="button" onclick="selectAnswer(4, 'Frequently')">Frequently</button>
+                        <button type="button" onclick="selectAnswer(4, 'Sometimes')">Sometimes</button>
+                        <button type="button" onclick="selectAnswer(4, 'Never')">Never</button>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>6. Based on the previous question, how many times does this happen to you in a week?</p>
+                    <div class="options">
+                        <button type="button" onclick="selectAnswer(5, '4 to 7 times')">4 to 7 times</button>
+                        <button type="button" onclick="selectAnswer(5, '1 to 3 times')">1 to 3 times</button>
+                        <button type="button" onclick="selectAnswer(5, 'Never happens')">Never happens</button>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>7. Do you personally think maintaining a grocery list is a tedious task?</p>
+                    <div class="options">
+                        <button type="button" onclick="selectAnswer(6, 'Yes')">Yes</button>
+                        <button type="button" onclick="selectAnswer(6, 'Sometimes')">Sometimes</button>
+                        <button type="button" onclick="selectAnswer(6, 'No')">No</button>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>8. Based on your answers, do you think that this is a big problem?</p>
+                    <div class="options">
+                        <button type="button" onclick="selectAnswer(7, 'Yes')">Yes</button>
+                        <button type="button" onclick="selectAnswer(7, 'Maybe')">Maybe</button>
+                        <button type="button" onclick="selectAnswer(7, 'No')">No</button>
+                    </div>
+                </div>
+
+                <div class="question end-screen">
+                    <h2>🎉 Thank You! 🎉</h2>
+                    <p>Your responses have been submitted.</p>
+                    <p>We appreciate your time!</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

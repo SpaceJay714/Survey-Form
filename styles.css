@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #b8cce0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.survey-container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.question-box {
+    animation: fadeIn 0.5s ease-in-out;
+    background: rgb(207, 220, 238);
+    padding: 30px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    height: 300px; /* FIXED height */
+    display: none; /* Hidden initially */
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Make sure the first question is hidden initially */
+.question {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Show active question smoothly */
+.question.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Maintain uniform spacing and size of options */
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Keep spacing fixed */
+    margin-top: 20px;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    background-color: #ff9100;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+button:hover {
+    background-color: #d34e19;
+    transform: scale(1.05);
+}
+
+/* End screen styling */
+.end-screen {
+    text-align: center;
+    display: none;
+    opacity: 0;
+    width: 100%;
+}
+
+.end-screen h2 {
+    font-size: 32px;
+    color: #28a745;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.end-screen p {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #555;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Introduction Screen */
+.intro-screen h2 {
+    font-size: 32px;
+    color: #28a745;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.intro-screen p {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #555;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.intro-screen {
+    background: rgb(207, 220, 238);
+    padding: 30px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.intro-screen button {
+    animation: fadeIn 1.5s ease-in-out;
+    margin-top: 40px;
+    padding: 12px 20px;
+    font-size: 18px;
+    background-color: #ff9100;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+.intro-screen button:hover {
+    background-color: #d34e19;
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header{
+    background-color: rgb(94, 115, 172);
+    padding: 1.5cm;
+    width: 160%;
+    margin-top: -200px;
+    margin-bottom: 80px;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.6);
+}
+
+.header h1{
+    animation: fadeIn 1.5s ease-in-out;
+    margin-bottom: 0px;
+    font-size: 34px;
+    color: rgb(255, 255, 255);
+    position: relative;
+    top: 0px; /* Pushes the title up */
+}
