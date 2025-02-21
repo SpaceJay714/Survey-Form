@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     background-color: #b8cce0;
     text-align: center;
     display: flex;
@@ -73,6 +73,7 @@ button {
     border-radius: 5px;
     transition: background 0.3s ease, transform 0.2s ease;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    font-family: Georgia, 'Times New Roman', Times, serif
 }
 
 button:hover {
@@ -177,3 +178,4 @@ button:hover {
     position: relative;
     top: 0px; /* Pushes the title up */
 }
+
