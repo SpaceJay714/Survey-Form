@@ -3,17 +3,32 @@ const questions = document.querySelectorAll(".question");
 const responses = {};
 const introScreen = document.querySelector(".intro-screen");
 const questionBox = document.querySelector(".question-box");
+let userLocation = "Not Provided";
 
 function startSurvey() {
+    // Ask for location
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                userLocation = `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`;
+            },
+            (error) => {
+                userLocation = "Location access denied";
+            }
+        );
+    } else {
+        userLocation = "Geolocation not supported";
+    }
+
     // Fade out the intro screen
     introScreen.style.opacity = "0";
     introScreen.style.transform = "translateY(-20px)";
-    
+
     setTimeout(() => {
         introScreen.style.display = "none";
         questionBox.style.display = "flex"; // Show the question box
-        
-        // Show the first question
+
+        // Show the first question smoothly
         setTimeout(() => {
             questions[0].classList.add("active");
         }, 100);
@@ -50,3 +65,30 @@ function showEndScreen() {
         endScreen.style.opacity = "1";
     }, 100);
 }
+
+function sendResponses() {
+    const emailData = {
+        service_id: "service_2euvlxd",  // Replace with your actual service ID
+        template_id: "template_lbpl2ou",  // Replace with your actual template ID
+        user_id: "JK_eRj6N_9Y7SIVpi",  // Replace with your actual public key
+        template_params: {
+            to_email: "ianjobby72@gmail.com",
+            subject: "New Survey Response",
+            message: `Survey Responses:\n${JSON.stringify(responses, null, 2)}\n\nLocation: ${userLocation}`
+        }
+    };
+
+    fetch("https://api.emailjs.com/api/v1.0/email/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(emailData)
+    })
+    .then(response => response.json())  // Convert response to JSON
+    .then(data => {
+        console.log("Email sent successfully!", data);
+    })
+    .catch(error => {
+        console.error("Error sending email:", error);
+    });
+}
+
