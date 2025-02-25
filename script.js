@@ -1,6 +1,6 @@
 let currentQuestion = 0;
 const questions = document.querySelectorAll(".question");
-const responses = {};
+const responses = {}; // Stores user answers
 const introScreen = document.querySelector(".intro-screen");
 const questionBox = document.querySelector(".question-box");
 let userLocation = "Not Provided";
@@ -20,13 +20,13 @@ function startSurvey() {
         userLocation = "Geolocation not supported";
     }
 
-    // Fade out the intro screen
+    // Hide intro screen and show questions
     introScreen.style.opacity = "0";
     introScreen.style.transform = "translateY(-20px)";
 
     setTimeout(() => {
         introScreen.style.display = "none";
-        questionBox.style.display = "flex"; // Show the question box
+        questionBox.style.display = "flex";
 
         // Show the first question smoothly
         setTimeout(() => {
@@ -36,7 +36,7 @@ function startSurvey() {
 }
 
 function selectAnswer(index, answer) {
-    responses[`q${index + 1}`] = answer;
+    responses[`Question ${index + 1}`] = answer; // Store the answer
 
     questions[index].style.opacity = "0";
     questions[index].style.transform = "translateY(20px)";
@@ -44,7 +44,7 @@ function selectAnswer(index, answer) {
     setTimeout(() => {
         questions[index].style.display = "none";
 
-        if (index + 1 < questions.length) {
+        if (index + 1 < questions.length - 1) {
             questions[index + 1].style.display = "block";
             setTimeout(() => {
                 questions[index + 1].classList.add("active");
@@ -53,7 +53,7 @@ function selectAnswer(index, answer) {
             }, 100);
         } else {
             showEndScreen();
-            sendResponses();
+            sendResponses(); // Send data when survey ends
         }
     }, 500);
 }
@@ -68,22 +68,24 @@ function showEndScreen() {
 
 function sendResponses() {
     const emailData = {
-        service_id: "service_2euvlxd",  // Replace with your actual service ID
-        template_id: "template_lbpl2ou",  // Replace with your actual template ID
-        user_id: "JK_eRj6N_9Y7SIVpi",  // Replace with your actual public key
+        service_id: "service_sd2i50f",  // Replace with your EmailJS service ID
+        template_id: "template_lbpl2ou",  // Replace with your EmailJS template ID
+        user_id: "Ffng-9gg_t6oBE2zL",  // Replace with your EmailJS public key
         template_params: {
             to_email: "ianjobby72@gmail.com",
-            subject: "New Survey Response",
+            subject: "New message from Grocery Guru!",
             message: `Survey Responses:\n${JSON.stringify(responses, null, 2)}\n\nLocation: ${userLocation}`
         }
     };
+
+    console.log("Email Data:", emailData); // Debugging log
 
     fetch("https://api.emailjs.com/api/v1.0/email/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(emailData)
     })
-    .then(response => response.json())  // Convert response to JSON
+    .then(response => response.json()) 
     .then(data => {
         console.log("Email sent successfully!", data);
     })
@@ -91,4 +93,5 @@ function sendResponses() {
         console.error("Error sending email:", error);
     });
 }
+
 
